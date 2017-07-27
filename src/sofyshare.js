@@ -24,6 +24,23 @@
 
         var settings = $.extend({}, defaults, options);
 
+        $('.social-share').each(function(index, el) {
+            var self = $(this);
+            var currentUrl = window.location.href;
+
+            self.attr('data-url', currentUrl);
+
+            // In the case that you cannot add data attribute (like divi theme) just specify
+            // the social media name as class, then it will add the right data attribute
+            if (self.hasClass('facebook')){
+              self.attr('data-network', 'facebook');
+            }else if (self.hasClass('twitter')){
+              self.attr('data-network', 'twitter');
+            }else if (self.hasClass('linkedin')){
+              self.attr('data-network', 'linkedin');
+            }
+          });
+
         if ( el.length > 0 ) {
 
             el.on('click', function(e){
